@@ -44,7 +44,20 @@
     </platform>
 
     <platform name="wp7">
-        <source-file src="ChildBrowserCommand.cs" />
+        <!-- copy these files to target -->
+        <source-file src="src/wp7/ChildBrowserCommand.cs"
+                     target-dir="Plugins" />
+
+        <!-- modify the project file to include the added files -->
+        <config-file target=".csproj" parent=".">
+            <ItemGroup>
+                <Compile Include="Plugins\\ChildBrowserCommand.cs"/>
+                <Content Include="www\\childbrowser.js" />
+            </ItemGroup>    
+        </config-file>    
     </platform>
 
 </plugin>
+
+
+
